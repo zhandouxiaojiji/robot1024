@@ -4,6 +4,7 @@
 ## 环境
 + python3 + selenium
 + chromedriver
++ 梯子
 
 ## 运行
 + reply.json 定义随机自动回复内容

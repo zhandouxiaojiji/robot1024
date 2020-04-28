@@ -9,6 +9,7 @@ import datetime
 home_url = 'http://t66y.com/thread0806.php?fid=7'
 
 dr = webdriver.Chrome()
+dr.set_page_load_timeout(120)
 dr.get(home_url)
 print("请先手动登录")
 os.system('pause')
@@ -44,17 +45,23 @@ start_hour = 9
 today_count = 0
 
 while True:
-	now = datetime.datetime.now()
-	dr.get(home_url)
-	if now.hour < start_hour:
-		today_count = 0
-		print(format_date(), "未到时间")
-	elif today_count < 10:
-		s = reply()
-		
-		today_count = today_count + 1
-	else:
-		print(format_date(), "今天的回帖上限已到")
-	sleep(1024*random.randint(10, 1024)) # 半小时回复一次
+	try:
+		dr.get(home_url)
+		print("进入技术区")
+		sleep(random.randint(5, 10))
+		now = datetime.datetime.now()
+		if now.hour < start_hour:
+			today_count = 0
+			print(format_date(), "未到时间")
+		elif today_count < 10:
+			s = reply()
+			
+			today_count = today_count + 1
+		else:
+			print(format_date(), "今天的回帖上限已到")
+		sleep(1024+random.randint(10, 1024)) # 1024秒后随机回复一次
+	except:
+		print("加载超时，5分钟后重试")
+		sleep(5*60)
 
 # dr.close()
