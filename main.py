@@ -28,13 +28,16 @@ def reply():
 	tds = tr3.find_elements_by_xpath("./*")
 	a = tds[1].find_element_by_tag_name("a")
 	href = a.get_attribute("href") # 获取链接
+	title = a.get_attribute("text") # 标题
+	print(format_date(), "进入帖子", title)
 	dr.get(href)
+	sleep(random.randint(10, 30))
 	textarea = dr.find_element_by_name("atc_content") # 输入框
 	s = randomReply()
 	textarea.send_keys(s)
 	btn = dr.find_element_by_name("Submit")
 	btn.click()
-	print(format_date(), "回复", s, href)
+	print(format_date(), "回复", s)
 	return s
 
 start_hour = 9
@@ -52,6 +55,6 @@ while True:
 		today_count = today_count + 1
 	else:
 		print(format_date(), "今天的回帖上限已到")
-	sleep(30*60) # 半小时回复一次
+	sleep(1024*random.randint(10, 1024)) # 半小时回复一次
 
 # dr.close()
