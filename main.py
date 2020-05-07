@@ -35,7 +35,7 @@ def reply():
   print(format_date(), "进入帖子", title)
   dr.get(href)
   sleep(random.randint(10, 30))
-  if history[href]:
+  if href in history:
     print("此贴已回复过")
     return 
   textarea = dr.find_element_by_name("atc_content") # 输入框
