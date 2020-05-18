@@ -65,7 +65,8 @@ while True:
     else:
       print(format_date(), "今天的回帖上限已到")
     sleep(1024+random.randint(10, 1024)) # 1024秒后随机回复一次
-  except:
+  except Exception as e:
+    print(e)
     print("加载超时，5分钟后重试")
     sleep(5*60)
 
