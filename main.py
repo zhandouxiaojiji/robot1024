@@ -61,7 +61,8 @@ while True:
       print(format_date(), "未到时间")
     elif today_count < 10:
       s = reply()
-      today_count = today_count + 1
+      if s:
+        today_count = today_count + 1
     else:
       print(format_date(), "今天的回帖上限已到")
     sleep(1024+random.randint(10, 1024)) # 1024秒后随机回复一次
